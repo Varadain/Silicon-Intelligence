@@ -1,202 +1,323 @@
-## BRAINS IN SILICON 
-Physical AI (PAI) systems interact with the real world using sensors, compute, and actuation.  
-They operate as a closed loop:
-
-Sensors → Perception → Cognition → Action → Feedback → Learning
-
-
-This repo explains:
-- Core intelligence layers
-- AI models used in each layer
-- Hardware mapping (RTL, FPGA, SoC)
-- System-level design thinking
+# Modern AI Systems: Models → Pipelines → Autonomous Intelligence
 
 ---
 
-## Intelligence Stack
+# 1. Big Picture
 
-| Layer                  | Role                         | Output Type         |
-|------------------------|------------------------------|---------------------|
-| Perceptive Intelligence | Understand environment        | Features / Objects  |
-| Cognitive Intelligence  | Decide what to do             | Decisions / Plans   |
-| Sensorimotor Intelligence | Execute actions             | Control Signals     |
-| Continuous Intelligence | Improve over time            | Updated Models      |
+| Stage | Description |
+|------|-------------|
+| Data | Raw input (text, image, logs) |
+| Representation | Tokens, embeddings |
+| Learning | Model training |
+| Reasoning | LLM inference |
+| Action | Agent decisions |
+| Feedback | System improvement |
 
 ---
 
-## 1. Cognitive Intelligence
+# 2. AI Model Families
 
-### Simple Meaning
-- Thinking and decision-making layer
+## 2.1 Language & Multimodal
 
-### Everyday Example
-- Choosing shortest route in traffic
+| Model | Purpose | Input | Output |
+|------|--------|------|--------|
+| LLM | Text generation | Text | Text |
+| SLM | Lightweight LLM | Text | Text |
+| VLM | Vision + language | Image + Text | Text |
+| MLLM | Multi-input | Text + Image + Audio | Output |
+| VLA | Perception → Action | Vision + Text | Action |
 
-### Technical Meaning
-- Reasoning, planning, memory-based decisions
-- Works under uncertainty
+---
 
-### AI Models
-| Model Type | Purpose |
-|------------|--------|
-| LLM        | Planning, reasoning |
-| RL         | Decision optimization |
-| Symbolic AI| Rule-based logic |
+## 2.2 Vision Models
 
-### Hardware Mapping
+| Model | Function | Key Idea |
+|------|----------|----------|
+| CNN | Feature extraction | Local filters |
+| ViT | Image understanding | Global attention |
+| YOLO | Detection | Real-time |
+| DETR | Detection | Transformer-based |
+| SAM | Segmentation | Prompt-based |
+
+---
+
+## 2.3 Generative Models
+
+| Model | Function | Concept |
+|------|----------|--------|
+| GAN | Generate data | Generator vs Discriminator |
+| VAE | Latent modeling | Probabilistic |
+| Diffusion | Image generation | Noise → data |
+
+---
+
+## 2.4 Temporal Models
+
+| Model | Use | Strength |
+|------|-----|---------|
+| RNN | Sequential data | Simple |
+| LSTM | Long memory | Stable |
+| GRU | Efficient memory | Fast |
+
+---
+
+## 2.5 Decision Models
+
+| Model | Learning Type | Use Case |
+|------|--------------|----------|
+| RL | Reward-based | Robotics |
+| DRL | RL + NN | Autonomous systems |
+| IL | Learn from expert | Driving |
+| BC | Copy behavior | Control systems |
+
+---
+
+# 3. Core AI Concepts
+
+## Tokens & Embeddings
+
+| Concept | Meaning |
+|--------|--------|
+| Token | Smallest text unit |
+| Embedding | Vector representation |
+| Context Window | Max tokens processed |
+
+---
+
+## Transformer
+
 | Component | Role |
 |----------|------|
-| CPU      | Control logic |
-| GPU      | Parallel compute |
-| NPU      | AI acceleration |
-
-### Key Equations
-- Optimal action:
-
-a* = argmax_a Q(s, a)
-
-
-- MDP:
-
-(S, A, P, R, γ)
-
+| Attention | Focus relevant info |
+| Encoder | Understand input |
+| Decoder | Generate output |
 
 ---
 
-## 2. Perceptive Intelligence
+# 4. Generative AI Pipeline
 
-### Simple Meaning
-- Understanding surroundings from sensors
-
-### Everyday Example
-- Seeing red light and stopping
-
-### Technical Meaning
-- Converts raw sensor data → structured information
-
-### AI Models
-| Model | Use |
-|------|-----|
-| CNN  | Image processing |
-| ViT  | Vision transformer |
-| Fusion Models | Multi-sensor data |
-
-### Data Pipeline
-
-Sensor → ADC → Preprocessing → CNN → Feature Extraction
-
-
-### Hardware Mapping
-| Block | Function |
+| Stage | Function |
 |------|----------|
-| MAC Units | Multiply-accumulate |
-| DSP Blocks | Signal processing |
-| Memory | Feature storage |
-
-### Key Equation
-- Convolution:
-
-y(i,j) = Σ x(m,n) * w(i-m, j-n)
-
+| Prompt | Instruction |
+| Tokenization | Convert to tokens |
+| Model | Generate output |
+| Evaluation | Check quality |
+| Feedback | Improve system |
 
 ---
 
-## 3. Sensorimotor Intelligence
+# 5. RAG System
 
-### Simple Meaning
-- Acting based on input
+## Pipeline
 
-### Everyday Example
-- Touch hot object → remove hand instantly
-
-### Technical Meaning
-- Closed-loop control system
-
-### Control Loop
-
-Input → Controller → Output → Feedback → Correction
-
-
-### Applications
-- Robotics
-- Drones
-- Autonomous driving
-
-### Hardware Mapping
-| Element | Implementation |
-|--------|----------------|
-| Controller | FSM / RTL |
-| Feedback | Sensors |
-| Execution | Actuators |
-
-### Key Equation (PID Controller)
-
-u(t) = Kp e(t) + Ki ∫e(t)dt + Kd de/dt
-
+| Step | Description |
+|------|------------|
+| Documents | Input data |
+| Chunking | Split data |
+| Embeddings | Vector conversion |
+| Vector DB | Storage |
+| Retrieval | Search relevant data |
+| Context | Build input |
+| LLM | Generate answer |
 
 ---
 
-## 4. Continuous Intelligence
+## Key Concepts
 
-### Simple Meaning
-- Learning over time
-
-### Everyday Example
-- Getting better at driving daily
-
-### Technical Meaning
-- Online learning + streaming updates
-
-### AI Models
-| Model | Use |
-|------|-----|
-| Online RL | Adaptive systems |
-| Streaming ML | Real-time updates |
-
-### Hardware Mapping
-| Platform | Role |
-|---------|------|
-| FPGA    | Adaptive logic |
-| ASIC    | Efficient inference |
-
-### Key Equations
-- Gradient update:
-
-θ = θ - η ∇L(θ)
-
-
-- Power:
-
-P = αCV²f
-
+| Concept | Purpose |
+|--------|--------|
+| Embeddings | Semantic search |
+| Top-K | Best results |
+| Context | Improve accuracy |
 
 ---
 
-## Hardware Perspective (VLSI Focus)
+# 6. Agentic AI
 
-| Layer        | Hardware Concern          |
-|--------------|--------------------------|
-| Perception   | Throughput, memory BW    |
-| Cognition    | Compute, scheduling      |
-| Control      | Latency, determinism     |
-| Learning     | Power, adaptability      |
+## Core Loop
 
----
-
-## Key Engineering Constraints
-
-| Constraint | Description |
-|-----------|------------|
-| Latency   | Time to respond |
-| Throughput| Data processed/sec |
-| Power     | Energy efficiency |
-| Area      | Silicon cost |
+| Step | Description |
+|------|------------|
+| Goal | Task |
+| Plan | Steps |
+| Action | Execute |
+| Observe | Feedback |
+| Update | Improve |
 
 ---
 
-## Summary
+## Components
 
-- Perception → Understand  
-- Cognition → Decide  
-- Action → Execute  
-- Continuous → Improve
+| Component | Role |
+|----------|------|
+| Reasoning | LLM |
+| Planning | Task breakdown |
+| Tools | External actions |
+| Memory | Context storage |
+
+---
+
+# 7. MCP (Model Context Protocol)
+
+## Core Architecture
+
+| Component | Role |
+|----------|------|
+| Model | Decision |
+| MCP Client | Request handler |
+| MCP Server | Tool provider |
+| Tools | Actions |
+| Resources | Data |
+
+---
+
+## Tool vs Resource vs Prompt
+
+| Type | Function |
+|------|----------|
+| Tool | Perform action |
+| Resource | Provide data |
+| Prompt | Guide workflow |
+
+---
+
+## Flow
+
+| Step | Action |
+|------|--------|
+| 1 | Model selects tool |
+| 2 | MCP sends request |
+| 3 | Tool executes |
+| 4 | Result returned |
+
+---
+
+# 8. System Architecture
+
+## Layers
+
+| Layer | Function |
+|------|----------|
+| Client | User interface |
+| API | Communication |
+| App Logic | Processing |
+| Model | Intelligence |
+| Data | Storage |
+
+---
+
+## Deployment Types
+
+| Type | Advantage | Limitation |
+|------|----------|------------|
+| Local | Low latency | Limited compute |
+| Cloud | Scalable | Cost |
+| Hybrid | Balanced | Complexity |
+
+---
+
+# 9. Performance Metrics
+
+| Metric | Meaning |
+|-------|--------|
+| Latency | Time per request |
+| Throughput | Requests/sec |
+| Cost | Compute usage |
+
+---
+
+# 10. Full System Flow
+
+| Stage | Description |
+|------|-------------|
+| Input | User query |
+| Prompt | Structured input |
+| RAG | Knowledge retrieval |
+| LLM | Reasoning |
+| Agent | Decision |
+| MCP | Tool access |
+| Tools | Execution |
+| Output | Result |
+| Feedback | Improvement |
+
+---
+
+# 11. Failure Points
+
+| Layer | Issue |
+|------|------|
+| LLM | Hallucination |
+| RAG | Wrong retrieval |
+| MCP | Tool failure |
+| System | Latency |
+
+---
+
+# 12. Real-World Mapping
+
+| System | Models Used |
+|--------|------------|
+| Autonomous Car | Vision + RL |
+| Robot | VLA |
+| Chatbot | LLM + RAG |
+| Enterprise AI | RAG + Agent |
+
+---
+
+# 13. NVIDIA-Style AI Pipeline
+
+| Stage | Description |
+|------|-------------|
+| Training | Data center GPUs |
+| Optimization | Model tuning |
+| Deployment | Cloud/Edge |
+| Inference | Real-time |
+| Feedback | Continuous learning |
+
+---
+
+# 14. Capstone System
+
+## Architecture
+
+| Step | Component |
+|------|----------|
+| Input | Documents |
+| Retrieval | RAG |
+| Reasoning | LLM |
+| Decision | Agent |
+| Integration | MCP |
+| Action | Tools |
+
+---
+
+# 15. Final Understanding
+
+| Evolution |
+|----------|
+| Models → Pipelines → Systems → Autonomous AI |
+
+---
+
+# Key Takeaways
+
+| Concept | Role |
+|--------|------|
+| LLM | Intelligence |
+| RAG | Knowledge |
+| Agent | Decision |
+| MCP | Integration |
+| Deployment | Execution |
+
+---
+
+# Final Insight
+
+Modern AI systems are:
+
+| Type |
+|------|
+| Integrated |
+| Layered |
+| Autonomous |
+| Scalable |
