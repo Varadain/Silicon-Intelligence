@@ -200,8 +200,3 @@ P = αCV²f
 - Cognition → Decide  
 - Action → Execute  
 - Continuous → Improve
-
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/955e28ea-9640-4e6b-8cb8-456d4a56c8b5" />
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/92e4e498-033b-4e3e-9ab6-0694ee821c85" />
-
-
