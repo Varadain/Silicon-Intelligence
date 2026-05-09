@@ -10,7 +10,7 @@ Think of a variable like a container that stores information.
 
 ```python
 x = 10
-name = "Varada"
+name = "Computer"
 ```
 
 ---
@@ -47,8 +47,8 @@ print(b)
 | Rule | Example |
 |---|---|
 | Must start with letter or `_` | `name`, `_data` |
-| Cannot start with number | ❌ `1value` |
-| No spaces | ❌ `my value` |
+| Cannot start with number |  `1value` |
+| No spaces |  `my value` |
 | Case sensitive | `age` ≠ `Age` |
 
 ---
