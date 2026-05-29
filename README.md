@@ -2,6 +2,7 @@
 
 ---
 
+
 # 1. Big Picture
 
 | Stage | Description |
